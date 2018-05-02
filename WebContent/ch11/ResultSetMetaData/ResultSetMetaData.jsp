@@ -24,12 +24,12 @@
 		
 		out.println("컬럼 수 : " + rsmd.getColumnCount()+"<hr>");
 		for(int i=1; i<rsmd.getColumnCount(); i++){
-			out.println(i+"번째 컬럼의 이름 : " + rsmd.getColumnName(i)+"<br>");
-			out.println(i+"번째 컬럼의 타입이름 : " + rsmd.getColumnTypeName(i) + "<br>");
+		out.println(i+"번째 컬럼의 이름 : " + rsmd.getColumnName(i)+"<br>");
+		out.println(i+"번째 컬럼의 타입이름 : " + rsmd.getColumnTypeName(i) + "<br>");
 		}
 	}catch(Exception e){
 		out.println(e);
-	}finally{
+}finally{
 		if(pstmt!=null)
 			try{pstmt.close();
 			
@@ -37,10 +37,12 @@
 		if(conn!=null) 
 			try{
 				conn.close();
+			
 			}catch(SQLException ex){
-				
+
+				}
 			}
-	}
+
 %>
 <!DOCTYPE html>
 <html>

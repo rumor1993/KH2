@@ -21,7 +21,6 @@
             <input type = radio name = gender value = 남 checked><span>남자</span>
             <input type = radio name = gender value = 여 ><span>여자</span>
        </div>
-            
       <b>이메일 주소</b><input type = text name = email placeholder="Enter email" required="required"><br>
       <div class = clearfix>
       	<button type = submit class = submitbtn>회원가입</button>
