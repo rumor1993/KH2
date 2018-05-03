@@ -39,8 +39,6 @@
 			out.println("<h3>접속실패</h3>");
 			out.println("<script>location.href='loginform.jsp'</script>");
 		}
-			
-		
 		
 	}catch(Exception e){
 		e.printStackTrace();

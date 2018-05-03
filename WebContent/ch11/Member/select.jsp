@@ -78,6 +78,13 @@ try{
 		out.println(rs.getString("email"));
 		out.println("</td>");
 		out.println("</tr>");
+		
+ 		out.println("<tr>");
+		out.println("<td colspan=2>");
+		out.println("<a href='member_list.jsp'> 리스트로 돌아가기 </a>");
+		out.println("</td>");
+		out.println("</tr>"); 
+		out.println("</table>"); 
 	}
 	
 	}catch(Exception e){

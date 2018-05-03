@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>Insert title here</title>
+<script src = join_check.js></script>
 </head>
 <body>
 	<form name = joinform action = joinProcess.jsp

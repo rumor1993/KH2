@@ -10,7 +10,12 @@
 
    Connection conn = null;
    String sql = "INSERT INTO member(ID,PASSWORD,NAME,AGE,GENDER,EMAIL) VALUES (?,?,?,?,?,?)";
+   String sql2 = "select * from member where ID = ?";
    PreparedStatement pstmt = null;
+   ResultSet rs =null;
+   
+   
+   
    
    String id = request.getParameter("id");
    String pass = request.getParameter("pass");
@@ -24,6 +29,21 @@
       Context init = new InitialContext();
       DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
       conn = ds.getConnection();
+      
+      pstmt = conn.prepareStatement(sql2);
+      pstmt.setString(1, id);
+      rs = pstmt.executeQuery();
+      
+      if(rs.next()){
+    	  out.println("<script>");
+    	  out.println("alert('중복된 아이디입니다.')");
+    	  out.println("history.back();");
+    	  out.println("</script>");
+    
+      }else{
+    	  pstmt.close();
+      }
+      
       
       pstmt = conn.prepareStatement(sql);
       

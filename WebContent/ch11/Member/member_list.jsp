@@ -10,7 +10,7 @@
 		Connection conn = null;
 		String sql = "select id from member";
 		PreparedStatement pstmt = null;
-		ResultSet rs =null;
+		ResultSet rs = null;
 
 
 try{
@@ -37,7 +37,12 @@ try{
 		out.println("</td>");
 		out.println("</tr>");
 	}
-	out.println("<table>");
+		out.println("<tr>");
+	out.println("<td colspan=2>");
+	out.println("<a href='main.jsp'> 메인으로 돌아가기 </a>");
+	out.println("</td>");
+	out.println("</tr>"); 
+	out.println("</table>");
 }catch(Exception e){
 	e.printStackTrace();
 }finally{
