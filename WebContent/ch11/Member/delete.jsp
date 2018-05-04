@@ -30,7 +30,7 @@ try{
 	
 	if(result != 0){
 		out.println("<script>alert('성공했습니다.')</script>");
-		out.println("<script>location.href = 'member_list.jsp'</script>");
+		out.println("<script>location.href = 'member_list.net'</script>");
 	}else{
 		out.println("<script>alert('실패했습니다.')</script>");
 	}

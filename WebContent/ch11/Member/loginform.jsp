@@ -9,12 +9,12 @@
 <script>
 	$(document).ready(function(){
 		$('.join').click(function(){
-			location.href='joinform.jsp';
+			location.href='join.net';
 		});
 	});
 </script>
 <body>
-	<form action="loginProcess(선생님).jsp" method ="post">
+	<form name="loginform" action="loginProcess.net" method ="post">
 		<h1>로그인</h1>
 			<hr>
 			<b>아이디</b>

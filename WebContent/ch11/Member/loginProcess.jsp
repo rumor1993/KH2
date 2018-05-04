@@ -37,7 +37,7 @@
 		else{
 			out.println("<script> alert('立加角菩')</script>");
 			out.println("<h3>立加角菩</h3>");
-			out.println("<script>location.href='loginform.jsp'</script>");
+			out.println("<script>location.href='login.net'</script>");
 		}
 		
 	}catch(Exception e){

@@ -30,16 +30,16 @@ try{
 		String id = rs.getString("id");
 		out.println("<tr>");
 		out.println("<td>");
-		out.println("<a href ='select.jsp?id="+ rs.getString("id") +"'>" +rs.getString("id"));
+		out.println("<a href ='select.net?id="+ rs.getString("id") +"'>" +rs.getString("id"));
 		out.println("</td>");
 		out.println("<td>");
-		out.println("<a href ='delete.jsp?id="+ rs.getString("id") +"'>삭제");
+		out.println("<a href ='delete.net?id="+ rs.getString("id") +"'>삭제");
 		out.println("</td>");
 		out.println("</tr>");
 	}
 		out.println("<tr>");
 	out.println("<td colspan=2>");
-	out.println("<a href='main.jsp'> 메인으로 돌아가기 </a>");
+	out.println("<a href='main.net'> 메인으로 돌아가기 </a>");
 	out.println("</td>");
 	out.println("</tr>"); 
 	out.println("</table>");

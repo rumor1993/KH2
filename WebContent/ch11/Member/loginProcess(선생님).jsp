@@ -33,7 +33,7 @@
 				// main.jsp로 이동합니다.
 				out.println("<script>");
 				out.println("alert('"+ id + "님이 로그인 하셨습니다.')");
-				out.println("location.href = 'main.jsp'");
+				out.println("location.href = 'main.net'");
 				out.println("</script>");
 			}else{
 				out.println("<script> alert('비밀번호가 틀립니다.')</script>");
@@ -44,7 +44,7 @@
 		}else{ //아이디가 틀린경우
 			out.println("<script> alert('아이디가 없습니다..')</script>");
 			out.println("<h3>접속실패</h3>");
-			out.println("<script>location.href='loginform.jsp'</script>");
+			out.println("<script>location.href='login.net'</script>");
 		}
 			
 		

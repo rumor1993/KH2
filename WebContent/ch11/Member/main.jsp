@@ -13,7 +13,7 @@
 	<%
 		if(id.equals("admin")){
 	%>
-	<a href = "member_list.jsp">관리자모드 접속(회원 목록 보기)</a>
+	<a href = "member_list.net">관리자모드 접속(회원 목록 보기)</a>
 	<%
 	}
 	%>
