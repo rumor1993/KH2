@@ -4,72 +4,15 @@
 <%@ page import = "javax.sql.*" %>
 <%@ page import = "javax.naming.*" %>
 
+<%@ taglib prefix="c"
+	uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <%
 	request.setCharacterEncoding("euc-kr");
-	
-		Connection conn = null;
-		String sql = "select id from member";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-
-try{
-	Context init = new InitialContext();
-	DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-	conn = ds.getConnection();
-	pstmt =  conn.prepareStatement(sql);
-	
-	rs = pstmt.executeQuery();
-	
-	
-	out.println("<table border=1>");
-	out.println("<tr>");
-	out.println("<td colspan =2>회원 목록");
-	out.println("</tr>");
-	while(rs.next()){
-		String id = rs.getString("id");
-		out.println("<tr>");
-		out.println("<td>");
-		out.println("<a href ='select.net?id="+ rs.getString("id") +"'>" +rs.getString("id"));
-		out.println("</td>");
-		out.println("<td>");
-		out.println("<a href ='delete.net?id="+ rs.getString("id") +"'>삭제");
-		out.println("</td>");
-		out.println("</tr>");
-	}
-		out.println("<tr>");
-	out.println("<td colspan=2>");
-	out.println("<a href='main.net'> 메인으로 돌아가기 </a>");
-	out.println("</td>");
-	out.println("</tr>"); 
-	out.println("</table>");
-}catch(Exception e){
-	e.printStackTrace();
-}finally{
-	if(rs!=null){
-		try{
-			rs.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-	if(pstmt!=null){
-		
-		try{
-			pstmt.close();
-		}catch(SQLException se){
-			se.printStackTrace();	
-		}
-	}
-	if(conn!=null){
-		try{
-			conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-}
 %>
+	
+	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,13 +21,39 @@ try{
 		table{width:200px; margin: 0 auto}
 		td{text-align:center; }
 		tr:nth-child(1) {background:pink}
-		
-	
-}
 	</style>
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
+	
+	<table border=1>
+		<tr>
+		<td colspan=3>회원 목록</td>
+		</tr>
+		<tr>
+			<td>아이디</td><td>이름</td><td>삭제</td>
+		</tr>
+		
+		<c:forEach var="m" items="${totallist }">
+			<tr>
+			<td>
+				<a href ='member_info.net?id=${m.id }'> ${m.id }</a>
+			</td>
+			<td>
+			${m.name}
+			</td>
+			<td>
+				<a href ='member_delete.net?id=${m.id }'>삭제</a>
+			</td>
+			</tr>
+		</c:forEach>
+		<tr>
+			<td colspan=3>
+			<a href='main.net'> 메인으로 돌아가기 </a>
+		</td>
+		</tr>
+		</table>
 
 </body>
 </html>

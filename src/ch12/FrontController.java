@@ -41,9 +41,58 @@ public class FrontController extends HttpServlet {
 			// 주소 변경없이 페이지를 보여줌
 			forward.setPath("./ch11/Member/loginform.jsp");
 		}
+		if(command.equals("/main.net")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			// 주소 변경없이 페이지를 보여줌
+			forward.setPath("./ch11/Member/main.jsp");
+		}
 		
 		else if(command.equals("/loginProcess.net")) {
 			action = new loginProcessAction();
+			try {
+				forward=action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/member_list.net")) {
+			action = new ListAction();
+			try {
+				forward=action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/member_info.net")) {
+			action = new Member_infoAction();
+			try {
+				forward=action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/member_delete.net")) {
+			action = new Member_deleteAction();
+			try {
+				forward=action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/member_update.net")) {
+			action = new Member_updateAction();
+			try {
+				forward=action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/member_updateProcess.net")) {
+			action = new Member_updateProcessAction();
 			try {
 				forward=action.execute(request, response);
 			}catch(Exception e) {

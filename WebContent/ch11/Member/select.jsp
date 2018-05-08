@@ -3,6 +3,9 @@
 <%@ page import = "java.sql.*" %>
 <%@ page import = "javax.sql.*" %>
 <%@ page import = "javax.naming.*" %>
+<%@ taglib prefix="c"
+	uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,110 +14,74 @@
 <body>
 <%
 	request.setCharacterEncoding("euc-kr");
-	
-		Connection conn = null;
-		String sql = "select * from member where id = ?";
-		PreparedStatement pstmt = null;
-		ResultSet rs =null;
-		String id = request.getParameter("id");
-
-try{
-	Context init = new InitialContext();
-	DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-	conn = ds.getConnection();
-	pstmt =  conn.prepareStatement(sql);
-	
-	pstmt.setString(1,id);
-	
-	rs = pstmt.executeQuery();
-	
-	
-	out.println("<table border=1>");
-	out.println("<tr>");
-	out.println("<td colspan =2>회원 정보");
-	out.println("</tr>");
-	while(rs.next()){
-		out.println("<tr>");
-		out.println("<td>");
-		out.println("아이디 : ");
-		out.println("</td>");
-		out.println("<td>");
-		out.println(rs.getString("id"));
-		out.println("</td>");
-		out.println("</tr>");
-		
-		out.println("<tr>");
-		out.println("<td>");
-		out.println("비밀번호 : ");
-		out.println("</td>");
-		out.println("<td>");
-		out.println(rs.getString("password"));
-		out.println("</td>");
-		out.println("</tr>");
-		
-		out.println("<tr>");
-		out.println("<td>");
-		out.println("이름 : ");
-		out.println("</td>");
-		out.println("<td>");
-		out.println(rs.getString("name"));
-		out.println("</td>");
-		out.println("</tr>");
-		
-		out.println("<tr>");
-		out.println("<td>");
-		out.println("나이 : ");
-		out.println("</td>");
-		out.println("<td>");
-		out.println(rs.getString("age"));
-		out.println("</td>");
-		out.println("</tr>");
-		
-		out.println("<tr>");
-		out.println("<td>");
-		out.println("email : ");
-		out.println("</td>");
-		out.println("<td>");
-		out.println(rs.getString("email"));
-		out.println("</td>");
-		out.println("</tr>");
-		
- 		out.println("<tr>");
-		out.println("<td colspan=2>");
-		out.println("<a href='member_list.jsp'> 리스트로 돌아가기 </a>");
-		out.println("</td>");
-		out.println("</tr>"); 
-		out.println("</table>"); 
-	}
-	
-	}catch(Exception e){
-		e.printStackTrace();
-	}finally{
-		if(rs!=null){
-			try{
-				rs.close();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-		if(pstmt!=null){
-			
-			try{
-				pstmt.close();
-			}catch(SQLException se){
-				se.printStackTrace();	
-			}
-		}
-		if(conn!=null){
-			try{
-				conn.close();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-	}
-		
-	
 %>
+	<c:set var="member" value="${memberinfo }">	</c:set>
+	<table border=1>
+	<tr>
+	<td colspan =2>회원 정보</td>
+	</tr>
+	<tr>
+		<td>
+		아이디 : 
+		</td>
+		<td>
+		${member.id }
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		비밀번호 : 
+		</td>
+		<td>
+		${member.password }
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		이름 : 
+		</td>
+		<td>
+		${member.name }
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		나이 : 
+		</td>
+		<td>
+		${member.age }
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		성별 : 
+		</td>
+		<td>
+		${member.gender }
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		이메일 : 
+		</td>
+		<td>
+		${member.email }
+		</td>
+	</tr>
+
+		
+ 		<tr>
+		<td colspan=2>
+		<a href='member_list.net'> 리스트로 돌아가기 </a>
+		</td>
+		</tr>
+		</table>
+
 </body>
 </html>
+
